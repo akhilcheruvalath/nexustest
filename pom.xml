@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.intuit.ctg.ttwin.win10.poc</groupId>
+    <artifactId>win10app</artifactId>
+    <version>2016.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <appxPath>${project.build.directory}/win10.zip</appxPath>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Zip-up all *.pom files & upload to repository -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <finalName>win10</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly-win10</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                	<tagNameFormat>${project.groupId}-${project.artifactId}-${project.version}</tagNameFormat>
+                    <username>${SCMuser}</username>
+                    <password>${SCMpassword}</password>
+                    <preparationGoals>clean</preparationGoals>
+                    <arguments>-s rc-settings.xml</arguments>
+                    <goals>clean deploy</goals>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>attach-artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${appxPath}</file>
+                                    <type>appx</type>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin-->
+        </plugins>
+    </build>
+
+<!--    <scm>
+        <connection>scm:perforce:sdperforcend1.bos.intuit.com:4000://SCM/packagingv2/TY16/components/mpkgpoms/trunk</connection>
+    </scm> -->
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>Maven Central Plugin Repository Proxy</name>
+            <url>https://nexus.intuit.net/nexus/content/groups/public</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Intuit Central Repo</name>
+            <url>https://nexus.intuit.net/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>eng.ctg.intuit-releases</id>
+            <name>CTG Engineering Release Repository</name>
+            <url>https://nexus.intuit.net/nexus/content/repositories/ENG.CTG.Intuit-Releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>eng.ctg.intuit-snapshots</id>
+            <name>CTG Engineering Snapshot Repository</name>
+            <url>https://nexus.intuit.net/nexus/content/repositories/ENG.CTG.Intuit-Snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
