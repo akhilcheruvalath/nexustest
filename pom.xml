@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.intuit.ctg.ttwin.win10.poc</groupId>
-    <artifactId>win10app</artifactId>
-    <version>2016.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <groupId>com.acheruvalath</groupId>
+    <artifactId>nexustest</artifactId>
+    <version>2016.0.0-Release</version>
+    <packaging>zip</packaging>
 
     <properties>
-        <appxPath>${project.build.directory}/win10.zip</appxPath>
+        <appxPath>${project.build.directory}</appxPath>
     </properties>
 
     <build>
@@ -18,7 +18,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <finalName>win10</finalName>
+                    <finalName>sample</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <descriptors>
                         <descriptor>assembly.xml</descriptor>
@@ -73,23 +73,21 @@
         </plugins>
     </build>
 
-<!--    <scm>
-        <connection>scm:perforce:sdperforcend1.bos.intuit.com:4000://SCM/packagingv2/TY16/components/mpkgpoms/trunk</connection>
-    </scm> -->
+
 
     <pluginRepositories>
         <pluginRepository>
             <id>central</id>
-            <name>Maven Central Plugin Repository Proxy</name>
-            <url>https://nexus.intuit.net/nexus/content/groups/public</url>
+            <name>Maven Central Plugin Repository hosted</name>
+            <url>http://localhost:8081/nexus/content/groups/public</url>
         </pluginRepository>
     </pluginRepositories>
 
     <repositories>
         <repository>
             <id>central</id>
-            <name>Intuit Central Repo</name>
-            <url>https://nexus.intuit.net/nexus/content/groups/public</url>
+            <name>Maven Central Plugin Repository hosted</name>
+            <url>http://localhost:8081/nexus/content/groups/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -101,14 +99,10 @@
 
     <distributionManagement>
         <repository>
-            <id>eng.ctg.intuit-releases</id>
+            <id>nexustest</id>
             <name>CTG Engineering Release Repository</name>
-            <url>https://nexus.intuit.net/nexus/content/repositories/ENG.CTG.Intuit-Releases</url>
+            <url>http://localhost:8081/nexus/content/repositories/nexustest</url>
         </repository>
-        <snapshotRepository>
-            <id>eng.ctg.intuit-snapshots</id>
-            <name>CTG Engineering Snapshot Repository</name>
-            <url>https://nexus.intuit.net/nexus/content/repositories/ENG.CTG.Intuit-Snapshots</url>
-        </snapshotRepository>
+      
     </distributionManagement>
 </project>
