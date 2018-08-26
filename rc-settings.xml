@@ -2,14 +2,14 @@
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
     <server>
-      <id>eng.ctg.intuit-releases</id>
-      <username>component-build</username>
-      <password>component-build</password>
+      <id>nexustest</id>
+      <username>admin</username>
+      <password>admin123</password>
     </server>
     <server>
-      <id>eng.ctg.intuit-snapshots</id>
-      <username>component-build</username>
-      <password>component-build</password>
+      <id>snapshots</id>
+      <username>admin</username>
+      <password>admin123</password>
     </server>
   </servers>
   <mirrors>
@@ -17,7 +17,7 @@
       <id>central</id>
       <mirrorOf>*</mirrorOf>
       <name>Human Readable Name for this Mirror.</name>
-      <url>https://nexus.intuit.net/nexus/content/groups/public</url>
+      <url>http://localhost:8081/nexus/content/groups/public/</url>
     </mirror>
   </mirrors>
 </settings>
